@@ -65,15 +65,15 @@ ext {
 
     def roomRuntimeVersion = "2.2.5"
 
-
     roomRuntimeDependencies = [
             roomRuntime: "androidx.room:room-runtime:" + roomRuntimeVersion,
+            roomKtx: "androidx.room:room-ktx:" + roomRuntimeVersion
     ]
 
     def roomCompilerVersion = "2.2.5"
 
     roomCompilerDependencies = [
-            roomCompiler: "androidx.room:room-compiler:" + roomCompilerVersion,
+            roomCompiler: "androidx.room:room-compiler:" + roomCompilerVersion
     ]
 
 }
