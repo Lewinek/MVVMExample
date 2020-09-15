@@ -1,8 +1,6 @@
 package com.example.kursakademiaandroida.core.api.model
 
 import com.example.kursakademiaandroida.features.characters.domain.model.Character
-import com.example.kursakademiaandroida.features.characters.domain.model.CharacterLocation
-import com.example.kursakademiaandroida.features.characters.domain.model.Origin
 import com.google.gson.annotations.SerializedName
 
 
@@ -13,8 +11,8 @@ data class CharacterRemote(
     @SerializedName("species") val species: String,
     @SerializedName("type") val type: String,
     @SerializedName("gender") val gender: String,
-    @SerializedName("origin") val origin: Origin,
-    @SerializedName("location") val characterLocation: CharacterLocation,
+    @SerializedName("origin") val origin: OriginRemote,
+    @SerializedName("location") val characterLocation: CharacterLocationRemote,
     @SerializedName("image") val image: String,
     @SerializedName("episode") val episodes: List<String>,
     @SerializedName("url") val url: String,
@@ -27,8 +25,8 @@ data class CharacterRemote(
         species = species,
         type = type,
         gender = gender,
-        origin = origin,
-        characterLocation = characterLocation,
+        origin = origin.toOrigin(),
+        characterLocation = characterLocation.toCharacterLocation(),
         image = image,
         episodes = episodes,
         url = url
