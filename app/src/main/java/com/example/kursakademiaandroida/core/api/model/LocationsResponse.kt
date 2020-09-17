@@ -2,7 +2,7 @@ package com.example.kursakademiaandroida.core.api.model
 
 import com.google.gson.annotations.SerializedName
 
-data class LocationResponse(
+data class LocationsResponse(
     @SerializedName("info") val info: ResponseInfo,
     @SerializedName("results") val results: List<LocationRemote>
 ) {
