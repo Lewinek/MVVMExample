@@ -1,6 +1,9 @@
 package com.example.kursakademiaandroida.mock
 
 import com.example.kursakademiaandroida.core.api.model.*
+import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterCached
+import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterLocationCached
+import com.example.kursakademiaandroida.features.characters.data.local.model.OriginCached
 import com.example.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
 import org.jetbrains.annotations.TestOnly
 
@@ -79,5 +82,32 @@ fun CharactersResponse.Companion.mock() = CharactersResponse(
         CharacterRemote.mock(),
         CharacterRemote.mock()
     )
+)
+
+@TestOnly
+fun CharacterCached.Companion.mock() = CharacterCached(
+    id = 2,
+    name = "character name",
+    status = "character status",
+    species = "character species",
+    type = "character typ",
+    gender = "character gender",
+    origin = OriginCached.mock(),
+    characterLocation = CharacterLocationCached.mock(),
+    image = "character image",
+    episodes = emptyList(),
+    url = "character url"
+)
+
+@TestOnly
+fun OriginCached.Companion.mock() = OriginCached(
+    name = "origin name",
+    url = "origin url"
+)
+
+@TestOnly
+fun CharacterLocationCached.Companion.mock() = CharacterLocationCached(
+    name = "origin name",
+    url = "origin url"
 )
 
