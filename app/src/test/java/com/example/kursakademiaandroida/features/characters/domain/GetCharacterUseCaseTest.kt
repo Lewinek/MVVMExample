@@ -1,6 +1,5 @@
 package com.example.kursakademiaandroida.features.characters.domain
 
-import com.example.kursakademiaandroida.features.characters.presentation.CharacterRepository
 import io.mockk.coVerify
 import io.mockk.mockk
 import kotlinx.coroutines.GlobalScope
