@@ -5,6 +5,7 @@ import com.example.kursakademiaandroida.features.characters.data.local.model.Cha
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterLocationCached
 import com.example.kursakademiaandroida.features.characters.data.local.model.OriginCached
 import com.example.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
+import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
 import org.jetbrains.annotations.TestOnly
 
 @TestOnly
@@ -109,5 +110,38 @@ fun OriginCached.Companion.mock() = OriginCached(
 fun CharacterLocationCached.Companion.mock() = CharacterLocationCached(
     name = "origin name",
     url = "origin url"
+)
+
+
+@TestOnly
+fun LocationRemote.Companion.mock() = LocationRemote(
+    id = 3,
+    name = "location name",
+    type = "location type",
+    dimension = "location dimension",
+    residents = emptyList(),
+    url = "location url",
+    created = "example data"
+)
+
+@TestOnly
+fun LocationsResponse.Companion.mock() = LocationsResponse(
+    info = ResponseInfo.mock(),
+    results = listOf(
+        LocationRemote.mock(),
+        LocationRemote.mock(),
+        LocationRemote.mock()
+    )
+
+)
+
+@TestOnly
+fun LocationCached.Companion.mock() = LocationCached(
+    id = 3,
+    name = "location name",
+    type = "location type",
+    dimension = "location dimension",
+    residents = emptyList(),
+    url = "location url"
 )
 
