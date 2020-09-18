@@ -2,6 +2,7 @@ package com.example.kursakademiaandroida.core.api
 
 import com.example.kursakademiaandroida.core.api.model.CharactersResponse
 import com.example.kursakademiaandroida.core.api.model.EpisodesResponse
+import com.example.kursakademiaandroida.core.api.model.LocationsResponse
 import retrofit2.http.GET
 
 interface RickAndMortyApi {
@@ -11,4 +12,7 @@ interface RickAndMortyApi {
 
     @GET("character")
     suspend fun getCharacters(): CharactersResponse
+
+    @GET("location")
+    suspend fun getLocations(): LocationsResponse
 }
