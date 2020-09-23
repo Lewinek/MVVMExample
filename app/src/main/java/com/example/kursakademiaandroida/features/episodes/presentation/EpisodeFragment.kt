@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.observe
 import com.example.kursakademiaandroida.R
+import com.example.kursakademiaandroida.core.base.UiState
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
@@ -17,6 +18,24 @@ class EpisodeFragment : Fragment() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         observeEpisodes()
+        observeUiState()
+    }
+
+    private fun observeUiState() {
+        viewModel.uiState.observe(this) {
+            when (it) {
+                UiState.Idle -> onIdleState()
+                UiState.Pending -> onPendingState()
+            }
+        }
+    }
+
+    private fun onIdleState() {
+        //handle idle state
+    }
+
+    private fun onPendingState() {
+        //handle pending state
     }
 
     private fun observeEpisodes() {
