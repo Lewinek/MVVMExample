@@ -10,4 +10,6 @@ val databaseModule = module {
     single {
         Room.databaseBuilder(androidContext(), AppDatabase::class.java, "database")
     }
+
+    single { get<AppDatabase>().episodeDao() }
 }

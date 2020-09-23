@@ -20,6 +20,6 @@ internal class GetLocationsUseCaseTest {
         )
 
         //then
-        coVerify { repository.getLocation() }
+        coVerify { repository.getLocations() }
     }
 }

@@ -1,4 +1,4 @@
-package com.example.kursakademiaandroida.features.data.remote.model
+package com.example.kursakademiaandroida.core.api.model
 
 import com.example.kursakademiaandroida.features.characters.domain.model.Character
 import com.google.gson.annotations.SerializedName
@@ -18,6 +18,8 @@ data class CharacterRemote(
     @SerializedName("url") val url: String,
     @SerializedName("created") val created: String
 ) {
+    companion object
+
     fun toCharacter() = Character(
         id = id,
         name = name,
