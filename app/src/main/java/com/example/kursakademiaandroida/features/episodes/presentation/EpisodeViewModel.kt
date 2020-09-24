@@ -1,21 +1,16 @@
 package com.example.kursakademiaandroida.features.episodes.presentation
 
-import androidx.lifecycle.*
-import com.example.kursakademiaandroida.core.base.UiState
+import androidx.lifecycle.LiveData
+import androidx.lifecycle.MutableLiveData
+import androidx.lifecycle.map
+import androidx.lifecycle.viewModelScope
+import com.example.kursakademiaandroida.core.base.BaseViewModel
 import com.example.kursakademiaandroida.features.episodes.domain.GetEpisodesUseCase
 import com.example.kursakademiaandroida.features.episodes.domain.model.Episode
 import com.example.kursakademiaandroida.features.episodes.presentation.model.EpisodeDisplayable
-import com.hadilq.liveevent.LiveEvent
 
-class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : ViewModel() {
+class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : BaseViewModel() {
 
-    private val _message by lazy { LiveEvent<String>() }
-
-    val message: LiveEvent<String> by lazy { _message }
-
-    private val _uiState by lazy { MutableLiveData<UiState>(UiState.Idle) }
-
-    val uiState: LiveData<UiState> by lazy { _uiState }
 
     private val _episodes by lazy {
         MutableLiveData<List<Episode>>()
@@ -35,27 +30,8 @@ class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : Vie
             scope = viewModelScope
         ) { result ->
             setIdleState()
-
-            result.onSuccess { episodes ->
-                episodeLiveData.value = episodes
-            }
-
-            result.onFailure { throwable ->
-                throwable.message
-                    ?.let { showMessage(it) }
-            }
+            result.onSuccess { episodeLiveData.value = it }
+            result.onFailure { handleFailure(it) }
         }
-    }
-
-    private fun showMessage(message: String) {
-        _message.value = message
-    }
-
-    private fun setIdleState() {
-        _uiState.value = UiState.Idle
-    }
-
-    private fun setPendingState() {
-        _uiState.value = UiState.Pending
     }
 }
