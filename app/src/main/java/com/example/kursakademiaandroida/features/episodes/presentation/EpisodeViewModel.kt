@@ -11,7 +11,6 @@ import com.example.kursakademiaandroida.features.episodes.presentation.model.Epi
 
 class EpisodeViewModel(private val getEpisodesUseCase: GetEpisodesUseCase) : BaseViewModel() {
 
-
     private val _episodes by lazy {
         MutableLiveData<List<Episode>>()
             .also { getEpisodes(it) }
