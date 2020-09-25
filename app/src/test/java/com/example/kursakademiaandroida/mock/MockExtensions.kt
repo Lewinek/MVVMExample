@@ -5,6 +5,7 @@ import com.example.kursakademiaandroida.features.characters.data.local.model.Cha
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterLocationCached
 import com.example.kursakademiaandroida.features.characters.data.local.model.OriginCached
 import com.example.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
+import com.example.kursakademiaandroida.features.episodes.domain.model.Episode
 import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
 import org.jetbrains.annotations.TestOnly
 
@@ -132,7 +133,6 @@ fun LocationsResponse.Companion.mock() = LocationsResponse(
         LocationRemote.mock(),
         LocationRemote.mock()
     )
-
 )
 
 @TestOnly
@@ -144,4 +144,15 @@ fun LocationCached.Companion.mock() = LocationCached(
     residents = emptyList(),
     url = "location url"
 )
+
+@TestOnly
+fun Episode.Companion.mock() = Episode(
+    id = 2,
+    name = "episode name",
+    airDate = "episode airDate",
+    code = "episode code",
+    characters = emptyList(),
+    url = "episode url"
+)
+
 
