@@ -68,7 +68,7 @@ internal class EpisodeViewModelTest : ViewModelTest() {
     }
 
     @Test
-    fun `GIVEN use case result is failure WHEN episode live data is observed THEN set idle state AND set error messahe in live data`() {
+    fun `GIVEN use case result is failure WHEN episode live data is observed THEN set idle state AND set error message in live data`() {
         val throwable = Throwable("Ops... something went wrong")
         val useCase = mockk<GetEpisodesUseCase> {
             every { this@mockk(any(), any(), any(), any()) } answers {
