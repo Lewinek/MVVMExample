@@ -14,7 +14,7 @@ class LocationViewModel(private val getLocationsUseCase: GetLocationsUseCase) : 
 
     private val _locations by lazy {
         MutableLiveData<List<Location>>()
-            .also { }
+            .also { getLocations(it) }
     }
 
     val locations: LiveData<List<LocationDisplayable>> by lazy {
