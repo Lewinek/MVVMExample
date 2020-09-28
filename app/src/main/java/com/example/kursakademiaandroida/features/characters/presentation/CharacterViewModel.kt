@@ -9,7 +9,7 @@ import com.example.kursakademiaandroida.features.characters.domain.GetCharacterU
 import com.example.kursakademiaandroida.features.characters.domain.model.Character
 import com.example.kursakademiaandroida.features.characters.presentation.model.CharacterDisplayable
 
-class CharacterViewModule(private val getCharacterUseCase: GetCharacterUseCase) : BaseViewModel() {
+class CharacterViewModel(private val getCharacterUseCase: GetCharacterUseCase) : BaseViewModel() {
 
     private val _characters by lazy {
         MutableLiveData<List<Character>>()
