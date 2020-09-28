@@ -4,6 +4,9 @@ import com.example.kursakademiaandroida.core.api.model.*
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterCached
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterLocationCached
 import com.example.kursakademiaandroida.features.characters.data.local.model.OriginCached
+import com.example.kursakademiaandroida.features.characters.domain.model.Character
+import com.example.kursakademiaandroida.features.characters.domain.model.CharacterLocation
+import com.example.kursakademiaandroida.features.characters.domain.model.Origin
 import com.example.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
 import com.example.kursakademiaandroida.features.episodes.domain.model.Episode
 import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
@@ -166,4 +169,30 @@ fun Episode.Companion.mock() = Episode(
     url = "episode url"
 )
 
+@TestOnly
+fun Character.Companion.mock() = Character(
+    id = 2,
+    name = "character name",
+    status = "character status",
+    species = "character species",
+    type = "character typ",
+    gender = "character gender",
+    origin = Origin.mock(),
+    characterLocation = CharacterLocation.mock(),
+    image = "character image",
+    episodes = emptyList(),
+    url = "character url"
+)
+
+@TestOnly
+fun Origin.Companion.mock() = Origin(
+    name = "origin name",
+    url = "origin url"
+)
+
+@TestOnly
+fun CharacterLocation.Companion.mock() = CharacterLocation(
+    name = "origin name",
+    url = "origin url"
+)
 
