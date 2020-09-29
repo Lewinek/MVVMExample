@@ -1,6 +1,8 @@
 package com.example.kursakademiaandroida.features.location.data.repository
 
 import com.example.kursakademiaandroida.core.api.RickAndMortyApi
+import com.example.kursakademiaandroida.core.exception.ErrorWrapper
+import com.example.kursakademiaandroida.core.exception.callOrThrow
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.location.data.local.LocationDao
 import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
@@ -11,12 +13,13 @@ import com.example.kursakademiaandroida.features.location.domain.model.Location
 class LocationRepositoryImpl(
     private val rickAndMortyApi: RickAndMortyApi,
     private val locationDao: LocationDao,
-    private val networkStateProvider: NetworkStateProvider
+    private val networkStateProvider: NetworkStateProvider,
+    private val errorWrapper: ErrorWrapper
 ) : LocationRepository {
 
     override suspend fun getLocations(): List<Location> {
         return if (networkStateProvider.isNetworkAvailable()) {
-            getLocationsFromRemote()
+            callOrThrow(errorWrapper) { getLocationsFromRemote() }
                 .also { saveLocationsToLocal(it) }
         } else {
             getLocationsFromLocal()
