@@ -2,6 +2,7 @@ package com.example.kursakademiaandroida.features.location.data.repository
 
 import com.example.kursakademiaandroida.core.api.RickAndMortyApi
 import com.example.kursakademiaandroida.core.api.model.LocationsResponse
+import com.example.kursakademiaandroida.core.exception.ErrorWrapper
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.location.data.local.LocationDao
 import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
@@ -23,11 +24,12 @@ internal class LocationRepositoryImplTest {
             coEvery { getLocations() } returns LocationsResponse.mock()
         }
         val locationDao = mockk<LocationDao>(relaxed = true)
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }
@@ -43,11 +45,12 @@ internal class LocationRepositoryImplTest {
             coEvery { getLocations() } returns LocationsResponse.mock()
         }
         val locationDao = mockk<LocationDao>(relaxed = true)
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }
@@ -60,6 +63,7 @@ internal class LocationRepositoryImplTest {
     fun `GIVEN network is disconnected WHEN locations request THEN fetch locations from local database`() {
         //given
         val api = mockk<RickAndMortyApi>(relaxed = true)
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val locationDao = mockk<LocationDao>() {
             coEvery { getLocations() } returns listOf(LocationCached.mock(), LocationCached.mock())
         }
@@ -67,7 +71,7 @@ internal class LocationRepositoryImplTest {
             every { isNetworkAvailable() } returns false
         }
         val repository: LocationRepository =
-            LocationRepositoryImpl(api, locationDao, networkStateProvider)
+            LocationRepositoryImpl(api, locationDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getLocations() }

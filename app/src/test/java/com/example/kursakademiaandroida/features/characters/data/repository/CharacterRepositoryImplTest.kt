@@ -2,6 +2,7 @@ package com.example.kursakademiaandroida.features.characters.data.repository
 
 import com.example.kursakademiaandroida.core.api.RickAndMortyApi
 import com.example.kursakademiaandroida.core.api.model.CharactersResponse
+import com.example.kursakademiaandroida.core.exception.ErrorWrapper
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.characters.data.local.CharacterDao
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterCached
@@ -21,12 +22,13 @@ internal class CharacterRepositoryImplTest {
         val api = mockk<RickAndMortyApi>() {
             coEvery { getCharacters() } returns CharactersResponse.mock()
         }
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val characterDao = mockk<CharacterDao>(relaxed = true)
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getCharacters() }
@@ -42,11 +44,12 @@ internal class CharacterRepositoryImplTest {
             coEvery { getCharacters() } returns CharactersResponse.mock()
         }
         val characterDao = mockk<CharacterDao>(relaxed = true)
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val networkStateProvider = mockk<NetworkStateProvider> {
             every { isNetworkAvailable() } returns true
         }
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getCharacters() }
@@ -59,6 +62,7 @@ internal class CharacterRepositoryImplTest {
     fun `GIVEN network is disconnected WHEN characters request THEN fetch characters from local database`() {
         //given
         val api = mockk<RickAndMortyApi>(relaxed = true)
+        val errorWrapper = mockk<ErrorWrapper>(relaxed = true)
         val characterDao = mockk<CharacterDao>() {
             coEvery { getCharacters() } returns listOf(
                 CharacterCached.mock(),
@@ -69,7 +73,7 @@ internal class CharacterRepositoryImplTest {
             every { isNetworkAvailable() } returns false
         }
         val repository: CharacterRepository =
-            CharacterRepositoryImpl(api, characterDao, networkStateProvider)
+            CharacterRepositoryImpl(api, characterDao, networkStateProvider, errorWrapper)
 
         //when
         runBlocking { repository.getCharacters() }
