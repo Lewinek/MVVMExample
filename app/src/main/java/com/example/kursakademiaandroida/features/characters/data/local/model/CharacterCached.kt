@@ -14,9 +14,9 @@ data class CharacterCached(
     val species: String,
     val type: String,
     val gender: String,
-    @Embedded
+    @Embedded(prefix = "origin")
     val origin: OriginCached,
-    @Embedded
+    @Embedded(prefix = "character_location")
     val characterLocation: CharacterLocationCached,
     val image: String,
     val episodes: List<String>,

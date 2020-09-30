@@ -4,8 +4,9 @@ import com.example.kursakademiaandroida.core.api.RickAndMortyApi
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.episodes.data.local.EpisodeDao
 import com.example.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
+import com.example.kursakademiaandroida.features.episodes.domain.EpisodeRepository
 import com.example.kursakademiaandroida.features.episodes.domain.model.Episode
-import com.example.kursakademiaandroida.features.episodes.presentation.EpisodeRepository
+
 
 class EpisodeRepositoryImpl(
     private val rickAndMortyApi: RickAndMortyApi,

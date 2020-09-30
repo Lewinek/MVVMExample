@@ -4,8 +4,9 @@ import com.example.kursakademiaandroida.core.api.RickAndMortyApi
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.location.data.local.LocationDao
 import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
+import com.example.kursakademiaandroida.features.location.domain.LocationRepository
 import com.example.kursakademiaandroida.features.location.domain.model.Location
-import com.example.kursakademiaandroida.features.location.presentation.LocationRepository
+
 
 class LocationRepositoryImpl(
     private val rickAndMortyApi: RickAndMortyApi,

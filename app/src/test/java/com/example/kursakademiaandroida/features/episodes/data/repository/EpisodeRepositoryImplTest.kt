@@ -5,7 +5,7 @@ import com.example.kursakademiaandroida.core.api.model.EpisodesResponse
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.episodes.data.local.EpisodeDao
 import com.example.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
-import com.example.kursakademiaandroida.features.episodes.presentation.EpisodeRepository
+import com.example.kursakademiaandroida.features.episodes.domain.EpisodeRepository
 import com.example.kursakademiaandroida.mock.mock
 import io.mockk.coEvery
 import io.mockk.coVerify

@@ -5,7 +5,7 @@ import com.example.kursakademiaandroida.core.api.model.LocationsResponse
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.location.data.local.LocationDao
 import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
-import com.example.kursakademiaandroida.features.location.presentation.LocationRepository
+import com.example.kursakademiaandroida.features.location.domain.LocationRepository
 import com.example.kursakademiaandroida.mock.mock
 import io.mockk.coEvery
 import io.mockk.coVerify

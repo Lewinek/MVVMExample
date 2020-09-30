@@ -5,7 +5,7 @@ import com.example.kursakademiaandroida.core.api.model.CharactersResponse
 import com.example.kursakademiaandroida.core.network.NetworkStateProvider
 import com.example.kursakademiaandroida.features.characters.data.local.CharacterDao
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterCached
-import com.example.kursakademiaandroida.features.characters.presentation.CharacterRepository
+import com.example.kursakademiaandroida.features.characters.domain.CharacterRepository
 import com.example.kursakademiaandroida.mock.mock
 import io.mockk.coEvery
 import io.mockk.coVerify

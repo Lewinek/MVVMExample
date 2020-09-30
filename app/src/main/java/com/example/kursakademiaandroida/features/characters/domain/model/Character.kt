@@ -12,4 +12,6 @@ data class Character(
     val image: String,
     val episodes: List<String>,
     val url: String
-)
+) {
+    companion object
+}
