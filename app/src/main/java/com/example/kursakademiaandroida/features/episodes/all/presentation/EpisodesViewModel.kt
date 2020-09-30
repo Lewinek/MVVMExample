@@ -1,4 +1,4 @@
-package com.example.kursakademiaandroida.features.episodes.presentation
+package com.example.kursakademiaandroida.features.episodes.all.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,12 +6,14 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.kursakademiaandroida.core.base.BaseViewModel
 import com.example.kursakademiaandroida.core.exception.ErrorMapper
+import com.example.kursakademiaandroida.features.episodes.all.presentation.model.EpisodeDisplayable
 import com.example.kursakademiaandroida.features.episodes.domain.GetEpisodesUseCase
 import com.example.kursakademiaandroida.features.episodes.domain.model.Episode
-import com.example.kursakademiaandroida.features.episodes.presentation.model.EpisodeDisplayable
+import com.example.kursakademiaandroida.features.episodes.navigation.EpisodeNavigator
 
-class EpisodeViewModel(
+class EpisodesViewModel(
     private val getEpisodesUseCase: GetEpisodesUseCase,
+    private val episodeNavigator: EpisodeNavigator,
     errorMapper: ErrorMapper
 ) : BaseViewModel(errorMapper) {
 
@@ -36,5 +38,9 @@ class EpisodeViewModel(
             result.onSuccess { episodeLiveData.value = it }
             result.onFailure { handleFailure(it) }
         }
+    }
+
+    fun onEpisodeClick() {
+        episodeNavigator.openEpisodeDetailsScreen()
     }
 }

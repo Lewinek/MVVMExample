@@ -1,4 +1,4 @@
-package com.example.kursakademiaandroida.features.episodes.presentation
+package com.example.kursakademiaandroida.features.episodes.all.presentation
 
 import androidx.lifecycle.observe
 import com.example.kursakademiaandroida.R
@@ -6,9 +6,9 @@ import com.example.kursakademiaandroida.core.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 
-class EpisodeFragment : BaseFragment<EpisodeViewModel>(R.layout.fragment_episode) {
+class EpisodesFragment : BaseFragment<EpisodesViewModel>(R.layout.fragment_episode) {
 
-    override val viewModel: EpisodeViewModel by viewModel()
+    override val viewModel: EpisodesViewModel by viewModel()
 
     override fun initViews() {
         super.initViews()
