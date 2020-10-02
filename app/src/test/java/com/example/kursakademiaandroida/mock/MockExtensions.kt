@@ -7,6 +7,7 @@ import com.example.kursakademiaandroida.features.characters.data.local.model.Ori
 import com.example.kursakademiaandroida.features.characters.domain.model.Character
 import com.example.kursakademiaandroida.features.characters.domain.model.CharacterLocation
 import com.example.kursakademiaandroida.features.characters.domain.model.Origin
+import com.example.kursakademiaandroida.features.episodes.all.presentation.model.EpisodeDisplayable
 import com.example.kursakademiaandroida.features.episodes.data.local.model.EpisodeCached
 import com.example.kursakademiaandroida.features.episodes.domain.model.Episode
 import com.example.kursakademiaandroida.features.location.data.local.model.LocationCached
@@ -44,6 +45,16 @@ fun EpisodesResponse.Companion.mock() = EpisodesResponse(
 
 @TestOnly
 fun EpisodeCached.Companion.mock() = EpisodeCached(
+    id = 2,
+    name = "episode name",
+    airDate = "episode airDate",
+    code = "episode code",
+    characters = emptyList(),
+    url = "episode url"
+)
+
+@TestOnly
+fun EpisodeDisplayable.Companion.mock() = EpisodeDisplayable(
     id = 2,
     name = "episode name",
     airDate = "episode airDate",

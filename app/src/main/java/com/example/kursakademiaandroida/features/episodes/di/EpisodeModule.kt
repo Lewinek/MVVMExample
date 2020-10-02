@@ -17,6 +17,6 @@ var episodeModule = module {
     factory { GetEpisodesUseCase(get()) }
 
     //presentation
-    viewModel { EpisodesViewModel(get(), get()) }
+    viewModel { EpisodesViewModel(get(), get(), get()) }
     factory { EpisodesFragment() }
 }
