@@ -1,4 +1,4 @@
-package com.example.kursakademiaandroida.features.characters.presentation
+package com.example.kursakademiaandroida.features.characters.all.presentation
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
@@ -6,11 +6,11 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.kursakademiaandroida.core.base.BaseViewModel
 import com.example.kursakademiaandroida.core.exception.ErrorMapper
+import com.example.kursakademiaandroida.features.characters.all.presentation.model.CharacterDisplayable
 import com.example.kursakademiaandroida.features.characters.domain.GetCharacterUseCase
 import com.example.kursakademiaandroida.features.characters.domain.model.Character
-import com.example.kursakademiaandroida.features.characters.presentation.model.CharacterDisplayable
 
-class CharacterViewModel(
+class CharactersViewModel(
     private val getCharacterUseCase: GetCharacterUseCase,
     errorMapper: ErrorMapper
 ) : BaseViewModel(errorMapper) {

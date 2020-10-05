@@ -1,4 +1,4 @@
-package com.example.kursakademiaandroida.features.characters.presentation.model
+package com.example.kursakademiaandroida.features.characters.all.presentation.model
 
 import com.example.kursakademiaandroida.features.characters.domain.model.CharacterLocation
 
