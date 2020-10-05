@@ -1,6 +1,9 @@
 package com.example.kursakademiaandroida.mock
 
 import com.example.kursakademiaandroida.core.api.model.*
+import com.example.kursakademiaandroida.features.characters.all.presentation.model.CharacterDisplayable
+import com.example.kursakademiaandroida.features.characters.all.presentation.model.CharacterLocationDisplayable
+import com.example.kursakademiaandroida.features.characters.all.presentation.model.OriginDisplayable
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterCached
 import com.example.kursakademiaandroida.features.characters.data.local.model.CharacterLocationCached
 import com.example.kursakademiaandroida.features.characters.data.local.model.OriginCached
@@ -117,7 +120,28 @@ fun CharacterCached.Companion.mock() = CharacterCached(
 )
 
 @TestOnly
+fun CharacterDisplayable.Companion.mock() = CharacterDisplayable(
+    id = 2,
+    name = "character name",
+    status = "character status",
+    species = "character species",
+    type = "character typ",
+    gender = "character gender",
+    origin = OriginDisplayable.mock(),
+    characterLocation = CharacterLocationDisplayable.mock(),
+    image = "character image",
+    episodes = emptyList(),
+    url = "character url"
+)
+
+@TestOnly
 fun OriginCached.Companion.mock() = OriginCached(
+    name = "origin name",
+    url = "origin url"
+)
+
+@TestOnly
+fun OriginDisplayable.Companion.mock() = OriginDisplayable(
     name = "origin name",
     url = "origin url"
 )
@@ -128,6 +152,11 @@ fun CharacterLocationCached.Companion.mock() = CharacterLocationCached(
     url = "origin url"
 )
 
+@TestOnly
+fun CharacterLocationDisplayable.Companion.mock() = CharacterLocationDisplayable(
+    name = "origin name",
+    url = "origin url"
+)
 
 @TestOnly
 fun LocationRemote.Companion.mock() = LocationRemote(

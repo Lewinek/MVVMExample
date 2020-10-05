@@ -16,6 +16,6 @@ var characterModule = module {
     factory { GetCharacterUseCase(get()) }
 
     //presentation
-    viewModel { CharactersViewModel(get(), get()) }
+    viewModel { CharactersViewModel(get(), get(), get()) }
     factory { CharactersFragment() }
 }
