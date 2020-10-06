@@ -1,4 +1,4 @@
-package com.example.kursakademiaandroida.features.location.presentation
+package com.example.kursakademiaandroida.features.location.all.presentation
 
 import androidx.lifecycle.observe
 import com.example.kursakademiaandroida.R

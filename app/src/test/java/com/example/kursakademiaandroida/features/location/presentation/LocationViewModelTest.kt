@@ -4,6 +4,7 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.kursakademiaandroida.core.base.UiState
 import com.example.kursakademiaandroida.core.exception.ErrorMapper
+import com.example.kursakademiaandroida.features.location.all.presentation.LocationViewModel
 import com.example.kursakademiaandroida.features.location.domain.GetLocationsUseCase
 import com.example.kursakademiaandroida.features.location.domain.model.Location
 import com.example.kursakademiaandroida.mock.mock

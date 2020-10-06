@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/locations_screen"
-        android:name="com.example.kursakademiaandroida.features.location.presentation.LocationFragment"
+        android:name="com.example.kursakademiaandroida.features.location.all.presentation.LocationFragment"
         android:label="@string/title_locations"
         tools:layout="@layout/fragment_location" />
 

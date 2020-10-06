@@ -1,4 +1,4 @@
-package com.example.kursakademiaandroida.features.location.presentation
+package com.example.kursakademiaandroida.features.location.all.presentation
 
 
 import androidx.lifecycle.LiveData
@@ -7,9 +7,9 @@ import androidx.lifecycle.map
 import androidx.lifecycle.viewModelScope
 import com.example.kursakademiaandroida.core.base.BaseViewModel
 import com.example.kursakademiaandroida.core.exception.ErrorMapper
+import com.example.kursakademiaandroida.features.location.all.presentation.model.LocationDisplayable
 import com.example.kursakademiaandroida.features.location.domain.GetLocationsUseCase
 import com.example.kursakademiaandroida.features.location.domain.model.Location
-import com.example.kursakademiaandroida.features.location.presentation.model.LocationDisplayable
 
 class LocationViewModel(
     private val getLocationsUseCase: GetLocationsUseCase,
