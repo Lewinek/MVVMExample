@@ -18,4 +18,6 @@ data class LocationDisplayable(
         residents = location.residents,
         url = location.url
     )
+
+    companion object
 }

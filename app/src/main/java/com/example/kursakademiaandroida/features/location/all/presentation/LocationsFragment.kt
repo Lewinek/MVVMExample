@@ -5,9 +5,9 @@ import com.example.kursakademiaandroida.R
 import com.example.kursakademiaandroida.core.base.BaseFragment
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
-class LocationFragment : BaseFragment<LocationViewModel>(R.layout.fragment_location) {
+class LocationsFragment : BaseFragment<LocationsViewModel>(R.layout.fragment_location) {
 
-    override val viewModel: LocationViewModel by viewModel()
+    override val viewModel: LocationsViewModel by viewModel()
 
     override fun initViews() {
         super.initViews()
