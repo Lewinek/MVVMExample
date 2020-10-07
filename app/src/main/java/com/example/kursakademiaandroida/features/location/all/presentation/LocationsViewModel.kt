@@ -10,9 +10,11 @@ import com.example.kursakademiaandroida.core.exception.ErrorMapper
 import com.example.kursakademiaandroida.features.location.all.presentation.model.LocationDisplayable
 import com.example.kursakademiaandroida.features.location.domain.GetLocationsUseCase
 import com.example.kursakademiaandroida.features.location.domain.model.Location
+import com.example.kursakademiaandroida.features.location.navigation.LocationNavigator
 
-class LocationViewModel(
+class LocationsViewModel(
     private val getLocationsUseCase: GetLocationsUseCase,
+    private val locationNavigator: LocationNavigator,
     errorMapper: ErrorMapper
 ) : BaseViewModel(errorMapper) {
 
@@ -37,5 +39,9 @@ class LocationViewModel(
             result.onSuccess { locationLiveData.value = it }
             result.onFailure { handleFailure(it) }
         }
+    }
+
+    fun onLocationClick(location: LocationDisplayable) {
+        locationNavigator.openLocationDetailsScreen(location)
     }
 }

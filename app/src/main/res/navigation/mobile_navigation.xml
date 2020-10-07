@@ -31,9 +31,14 @@
 
     <fragment
         android:id="@+id/locations_screen"
-        android:name="com.example.kursakademiaandroida.features.location.all.presentation.LocationFragment"
+        android:name="com.example.kursakademiaandroida.features.location.all.presentation.LocationsFragment"
         android:label="@string/title_locations"
-        tools:layout="@layout/fragment_location" />
+        tools:layout="@layout/fragment_location">
+        <action
+            android:id="@+id/action_navigate_from_locations_screen_to_location_details_screen"
+            app:destination="@id/location_details_screen"
+            app:popUpTo="@id/locations_screen" />
+    </fragment>
 
     <fragment
         android:id="@+id/episodes_details_screen"
@@ -46,4 +51,10 @@
         android:name="com.example.kursakademiaandroida.features.characters.details.CharacterDetailsFragment"
         android:label="fragment_character_details"
         tools:layout="@layout/fragment_character_details" />
+
+    <fragment
+        android:id="@+id/location_details_screen"
+        android:name="com.example.kursakademiaandroida.features.location.details.LocationDetailsFragment"
+        android:label="fragment_location_details"
+        tools:layout="@layout/fragment_location_details" />
 </navigation>
