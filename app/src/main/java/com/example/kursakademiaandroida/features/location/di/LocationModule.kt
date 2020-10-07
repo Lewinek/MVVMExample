@@ -1,7 +1,7 @@
 package com.example.kursakademiaandroida.features.location.di
 
-import com.example.kursakademiaandroida.features.location.all.presentation.LocationFragment
-import com.example.kursakademiaandroida.features.location.all.presentation.LocationViewModel
+import com.example.kursakademiaandroida.features.location.all.presentation.LocationsFragment
+import com.example.kursakademiaandroida.features.location.all.presentation.LocationsViewModel
 import com.example.kursakademiaandroida.features.location.data.repository.LocationRepositoryImpl
 import com.example.kursakademiaandroida.features.location.domain.GetLocationsUseCase
 import com.example.kursakademiaandroida.features.location.domain.LocationRepository
@@ -16,6 +16,6 @@ var locationModule = module {
     factory { GetLocationsUseCase(get()) }
 
     //presentation
-    viewModel { LocationViewModel(get(), get()) }
-    factory { LocationFragment() }
+    viewModel { LocationsViewModel(get(), get(), get()) }
+    factory { LocationsFragment() }
 }

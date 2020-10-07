@@ -4,9 +4,11 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.viewModelScope
 import com.example.kursakademiaandroida.core.base.UiState
 import com.example.kursakademiaandroida.core.exception.ErrorMapper
-import com.example.kursakademiaandroida.features.location.all.presentation.LocationViewModel
+import com.example.kursakademiaandroida.features.location.all.presentation.LocationsViewModel
+import com.example.kursakademiaandroida.features.location.all.presentation.model.LocationDisplayable
 import com.example.kursakademiaandroida.features.location.domain.GetLocationsUseCase
 import com.example.kursakademiaandroida.features.location.domain.model.Location
+import com.example.kursakademiaandroida.features.location.navigation.LocationNavigator
 import com.example.kursakademiaandroida.mock.mock
 import com.example.kursakademiaandroida.utils.ViewModelTest
 import com.example.kursakademiaandroida.utils.getOrAwaitValue
@@ -18,14 +20,31 @@ import org.amshove.kluent.`should be`
 import org.amshove.kluent.shouldBe
 import org.junit.jupiter.api.Test
 
-internal class LocationViewModelTest : ViewModelTest() {
+internal class LocationsViewModelTest : ViewModelTest() {
+
+    @Test
+    fun `WHEN episode is clicked THAN open episode details screen`() {
+        //given
+        val useCase = mockk<GetLocationsUseCase>(relaxed = true)
+        val locationNavigator = mockk<LocationNavigator>(relaxed = true)
+        val errorMapper = mockk<ErrorMapper>(relaxed = true)
+        val viewModel = LocationsViewModel(useCase, locationNavigator, errorMapper)
+        val location = LocationDisplayable.mock()
+
+        //when
+        viewModel.onLocationClick(location)
+
+        //than
+        verify { locationNavigator.openLocationDetailsScreen(location) }
+    }
 
     @Test
     fun `WHEN locations live data is observed THEN set pending state`() {
         //given
         val useCase = mockk<GetLocationsUseCase>(relaxed = true)
+        val locationNavigator = mockk<LocationNavigator>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val viewModel = LocationViewModel(useCase, errorMapper)
+        val viewModel = LocationsViewModel(useCase, locationNavigator, errorMapper)
 
         //when
         viewModel.locations.observeForTesting()
@@ -38,8 +57,9 @@ internal class LocationViewModelTest : ViewModelTest() {
     fun `WHEN locations live data is observed THEN invoke use case to get locations`() {
         //given
         val useCase = mockk<GetLocationsUseCase>(relaxed = true)
+        val locationNavigator = mockk<LocationNavigator>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val viewModel = LocationViewModel(useCase, errorMapper)
+        val viewModel = LocationsViewModel(useCase, locationNavigator, errorMapper)
 
         //when
         viewModel.locations.observeForTesting()
@@ -56,8 +76,9 @@ internal class LocationViewModelTest : ViewModelTest() {
                 lastArg<(Result<List<Location>>) -> Unit>()(Result.success(locations))
             }
         }
+        val locationNavigator = mockk<LocationNavigator>(relaxed = true)
         val errorMapper = mockk<ErrorMapper>(relaxed = true)
-        val viewModel = LocationViewModel(useCase, errorMapper)
+        val viewModel = LocationsViewModel(useCase, locationNavigator, errorMapper)
 
         //when
         viewModel.locations.observeForTesting()
@@ -80,11 +101,12 @@ internal class LocationViewModelTest : ViewModelTest() {
                 lastArg<(Result<List<Location>>) -> Unit>()(Result.failure(throwable))
             }
         }
+        val locationNavigator = mockk<LocationNavigator>(relaxed = true)
         val observer = mockk<Observer<String>>(relaxed = true)
         val errorMapper = mockk<ErrorMapper> {
             every { map(any()) } returns throwable.message!!
         }
-        val viewModel = LocationViewModel(useCase, errorMapper)
+        val viewModel = LocationsViewModel(useCase, locationNavigator, errorMapper)
 
         //when
         viewModel.message.observeForever(observer)
