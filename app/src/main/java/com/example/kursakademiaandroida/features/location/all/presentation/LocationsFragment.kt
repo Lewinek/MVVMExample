@@ -1,17 +1,24 @@
 package com.example.kursakademiaandroida.features.location.all.presentation
 
+import android.view.View
 import androidx.lifecycle.observe
+import androidx.recyclerview.widget.DividerItemDecoration
 import com.example.kursakademiaandroida.R
 import com.example.kursakademiaandroida.core.base.BaseFragment
+import kotlinx.android.synthetic.main.fragment_character.*
+import kotlinx.android.synthetic.main.fragment_location.*
+import org.koin.android.ext.android.inject
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class LocationsFragment : BaseFragment<LocationsViewModel>(R.layout.fragment_location) {
 
     override val viewModel: LocationsViewModel by viewModel()
+    private val adapter: LocationAdapter by inject()
+    private val dividerItemDecoration: DividerItemDecoration by inject()
 
     override fun initViews() {
         super.initViews()
-        //initialize all view-related classes
+        initRecycler()
     }
 
     override fun initObservers() {
@@ -21,17 +28,23 @@ class LocationsFragment : BaseFragment<LocationsViewModel>(R.layout.fragment_loc
 
     override fun onIdleState() {
         super.onIdleState()
-        //handle idle state here
+        characters_progress_bar.visibility = View.GONE
     }
 
     override fun onPendingState() {
         super.onPendingState()
-        //handle pending state here
+        characters_progress_bar.visibility = View.VISIBLE
     }
 
     private fun observeEpisodes() {
         viewModel.locations.observe(this) {
-            //code to display episodes
+            adapter.setLocations(it)
         }
+    }
+
+    private fun initRecycler() {
+        adapter.onLocationClickListener = { viewModel.onLocationClick(it) }
+        locations_recycler_view.adapter = adapter
+        locations_recycler_view.addItemDecoration(dividerItemDecoration)
     }
 }
