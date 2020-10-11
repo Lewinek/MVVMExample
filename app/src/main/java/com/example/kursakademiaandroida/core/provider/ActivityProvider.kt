@@ -13,7 +13,7 @@ class ActivityProvider(application: Application) {
             Application.ActivityLifecycleCallbacks {
 
             override fun onActivityCreated(activity: Activity, bundle: Bundle?) {
-                TODO("Not yet implemented")
+
             }
 
             override fun onActivityStarted(activity: Activity) {

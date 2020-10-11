@@ -1,10 +1,15 @@
 package com.example.kursakademiaandroida.features.episodes.di
 
+import com.example.kursakademiaandroida.features.episodes.all.presentation.EpisodeAdapter
 import com.example.kursakademiaandroida.features.episodes.all.presentation.EpisodesFragment
 import com.example.kursakademiaandroida.features.episodes.all.presentation.EpisodesViewModel
 import com.example.kursakademiaandroida.features.episodes.data.repository.EpisodeRepositoryImpl
+import com.example.kursakademiaandroida.features.episodes.details.EpisodeDetailsFragment
+import com.example.kursakademiaandroida.features.episodes.details.EpisodeViewModel
 import com.example.kursakademiaandroida.features.episodes.domain.EpisodeRepository
 import com.example.kursakademiaandroida.features.episodes.domain.GetEpisodesUseCase
+import com.example.kursakademiaandroida.features.episodes.navigation.EpisodeNavigator
+import com.example.kursakademiaandroida.features.episodes.navigation.EpisodeNavigatorImpl
 import org.koin.androidx.viewmodel.dsl.viewModel
 import org.koin.dsl.module
 
@@ -18,5 +23,11 @@ var episodeModule = module {
 
     //presentation
     viewModel { EpisodesViewModel(get(), get(), get()) }
+    viewModel { EpisodeViewModel() }
     factory { EpisodesFragment() }
+    factory { EpisodeDetailsFragment() }
+    factory { EpisodeAdapter() }
+
+    //navigation
+    factory<EpisodeNavigator> { EpisodeNavigatorImpl(get()) }
 }
