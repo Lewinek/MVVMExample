@@ -8,8 +8,10 @@ import org.koin.dsl.module
 val databaseModule = module {
 
     single {
-        Room.databaseBuilder(androidContext(), AppDatabase::class.java, "database")
+        Room.databaseBuilder(androidContext(), AppDatabase::class.java, "database").build()
     }
 
     single { get<AppDatabase>().episodeDao() }
+    single { get<AppDatabase>().characterDao() }
+    single { get<AppDatabase>().locationDao() }
 }
