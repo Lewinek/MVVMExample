@@ -1,45 +1,44 @@
 package com.example.kursakademiaandroida.features.location.all.presentation
 
 import android.view.LayoutInflater
-import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import com.example.kursakademiaandroida.R
+import com.example.kursakademiaandroida.core.adapter.BindableAdapter
+import com.example.kursakademiaandroida.databinding.ItemLocationBinding
 import com.example.kursakademiaandroida.features.location.all.presentation.model.LocationDisplayable
-import kotlinx.android.synthetic.main.item_episode.view.*
 
-class LocationAdapter : RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
+class LocationAdapter : BindableAdapter<LocationDisplayable>,
+    RecyclerView.Adapter<LocationAdapter.LocationViewHolder>() {
 
     private val locations = mutableListOf<LocationDisplayable>()
     lateinit var onLocationClickListener: (LocationDisplayable) -> Unit
 
-    fun setLocations(_locations: List<LocationDisplayable>) {
+    override fun setItems(items: List<LocationDisplayable>) {
         if (locations.isNotEmpty()) locations.clear()
-        locations.addAll(_locations)
+        locations.addAll(items)
         notifyDataSetChanged()
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): LocationViewHolder {
-        return LocationViewHolder(LayoutInflater.from(parent.context)
-            .inflate(R.layout.item_location, parent, false))
+        val inflater = LayoutInflater.from(parent.context)
+        val binding = ItemLocationBinding.inflate(inflater, parent, false)
+        return LocationViewHolder(binding)
     }
 
     override fun onBindViewHolder(holder: LocationViewHolder, position: Int) {
         val location = locations[position]
-        holder.bind(location, onLocationClickListener)
+        holder.bind(location)
+        holder.itemView.setOnClickListener { onLocationClickListener.invoke(location) }
     }
 
     override fun getItemCount(): Int = locations.size
 
-    class LocationViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-
-        fun bind(
-            location: LocationDisplayable,
-            onLocationClickListener: (LocationDisplayable) -> Unit
-        ) {
-            with(itemView) {
-                setOnClickListener { onLocationClickListener.invoke(location) }
-                item_episode_name.text = location.name
+    class LocationViewHolder(private val binding: ItemLocationBinding) :
+        RecyclerView.ViewHolder(binding.root) {
+        fun bind(location: LocationDisplayable) {
+            with(binding) {
+                binding.item = location
+                binding.executePendingBindings()
             }
         }
     }

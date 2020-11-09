@@ -1,10 +1,25 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
 
-    <TextView
-        android:id="@+id/item_episode_name"
+    <data>
+
+        <import type="com.example.kursakademiaandroida.R" />
+
+        <variable
+            name="item"
+            type="com.example.kursakademiaandroida.features.episodes.all.presentation.model.EpisodeDisplayable" />
+    </data>
+
+    <LinearLayout
+        android:id="@+id/item_main_layout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
-</LinearLayout>
+        android:layout_height="match_parent"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/item_episode_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@{item.fullName}" />
+    </LinearLayout>
+</layout>

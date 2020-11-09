@@ -1,11 +1,14 @@
 package com.example.kursakademiaandroida.features.characters.details
 
+import com.example.kursakademiaandroida.BR
 import com.example.kursakademiaandroida.R
 import com.example.kursakademiaandroida.core.base.BaseFragment
+import com.example.kursakademiaandroida.databinding.FragmentCharacterDetailsBinding
 import org.koin.androidx.viewmodel.ext.android.viewModel
 
 class CharacterDetailsFragment :
-    BaseFragment<CharacterViewModel>(R.layout.fragment_character_details) {
+    BaseFragment<CharacterViewModel, FragmentCharacterDetailsBinding>(BR.viewModel,
+        R.layout.fragment_character_details) {
 
     override val viewModel: CharacterViewModel by viewModel()
 
