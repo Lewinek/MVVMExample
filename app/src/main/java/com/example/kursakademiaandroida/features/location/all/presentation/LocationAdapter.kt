@@ -38,6 +38,7 @@ class LocationAdapter : BindableAdapter<LocationDisplayable>,
         fun bind(location: LocationDisplayable) {
             with(binding) {
                 binding.item = location
+                binding.executePendingBindings()
             }
         }
     }

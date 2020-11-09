@@ -38,6 +38,7 @@ class CharacterAdapter : BindableAdapter<CharacterDisplayable>,
         fun bind(character: CharacterDisplayable) {
             with(binding) {
                 binding.item = character
+                binding.executePendingBindings()
             }
         }
     }

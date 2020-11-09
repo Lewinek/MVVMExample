@@ -38,7 +38,7 @@ class EpisodeAdapter : BindableAdapter<EpisodeDisplayable>,
         fun bind(episode: EpisodeDisplayable) {
             with(binding) {
                 binding.item = episode
-
+                binding.executePendingBindings()
             }
         }
     }

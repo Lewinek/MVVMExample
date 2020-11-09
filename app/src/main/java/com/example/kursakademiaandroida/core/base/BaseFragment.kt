@@ -35,7 +35,7 @@ abstract class BaseFragment<T : BaseViewModel, S : ViewDataBinding>(
         super.onDestroyView()
     }
 
-    open fun initViews(s: S) {}
+    open fun initViews(binding: S) {}
 
     open fun initObservers() {
         observeMessage()
