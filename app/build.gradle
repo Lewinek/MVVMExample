@@ -9,7 +9,7 @@ android {
     compileSdkVersion 29
 
     defaultConfig {
-        applicationId "com.example.kursakademiaandroida"
+        applicationId "com.example.mvvmexample"
         minSdkVersion 23
         targetSdkVersion 29
         versionCode 1

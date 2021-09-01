@@ -7,7 +7,7 @@
 
     <fragment
         android:id="@+id/characters_screen"
-        android:name="com.example.kursakademiaandroida.features.characters.all.presentation.CharactersFragment"
+        android:name="com.example.mvvmexample.features.characters.all.presentation.CharactersFragment"
         android:label="@string/title_characters"
         tools:layout="@layout/fragment_character">
         <action
@@ -18,7 +18,7 @@
 
     <fragment
         android:id="@+id/episodes_screen"
-        android:name="com.example.kursakademiaandroida.features.episodes.all.presentation.EpisodesFragment"
+        android:name="com.example.mvvmexample.features.episodes.all.presentation.EpisodesFragment"
         android:label="@string/title_episodes"
         tools:layout="@layout/fragment_episode">
 
@@ -31,7 +31,7 @@
 
     <fragment
         android:id="@+id/locations_screen"
-        android:name="com.example.kursakademiaandroida.features.location.all.presentation.LocationsFragment"
+        android:name="com.example.mvvmexample.features.location.all.presentation.LocationsFragment"
         android:label="@string/title_locations"
         tools:layout="@layout/fragment_location">
 
@@ -43,19 +43,19 @@
 
     <fragment
         android:id="@+id/episodes_details_screen"
-        android:name="com.example.kursakademiaandroida.features.episodes.details.EpisodeDetailsFragment"
+        android:name="com.example.mvvmexample.features.episodes.details.EpisodeDetailsFragment"
         android:label="fragment_episode_details"
         tools:layout="@layout/fragment_episode_details" />
 
     <fragment
         android:id="@+id/character_details_screen"
-        android:name="com.example.kursakademiaandroida.features.characters.details.CharacterDetailsFragment"
+        android:name="com.example.mvvmexample.features.characters.details.CharacterDetailsFragment"
         android:label="fragment_character_details"
         tools:layout="@layout/fragment_character_details" />
 
     <fragment
         android:id="@+id/location_details_screen"
-        android:name="com.example.kursakademiaandroida.features.location.details.LocationDetailsFragment"
+        android:name="com.example.mvvmexample.features.location.details.LocationDetailsFragment"
         android:label="fragment_location_details"
         tools:layout="@layout/fragment_location_details" />
 </navigation>

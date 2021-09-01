@@ -3,11 +3,11 @@
 
     <data>
 
-        <import type="com.example.kursakademiaandroida.R" />
+        <import type="com.example.mvvmexample.R" />
 
         <variable
             name="item"
-            type="com.example.kursakademiaandroida.features.episodes.all.presentation.model.EpisodeDisplayable" />
+            type="com.example.mvvmexample.features.episodes.all.presentation.model.EpisodeDisplayable" />
     </data>
 
     <LinearLayout
