@@ -5,7 +5,7 @@
 
         <variable
             name="item"
-            type="com.example.kursakademiaandroida.features.location.all.presentation.model.LocationDisplayable" />
+            type="com.example.mvvmexample.features.location.all.presentation.model.LocationDisplayable" />
     </data>
 
     <LinearLayout

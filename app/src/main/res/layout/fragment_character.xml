@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.kursakademiaandroida.features.characters.all.presentation.CharactersViewModel" />
+            type="com.example.mvvmexample.features.characters.all.presentation.CharactersViewModel" />
     </data>
 
     <FrameLayout

@@ -7,7 +7,7 @@
 
         <variable
             name="viewModel"
-            type="com.example.kursakademiaandroida.features.location.all.presentation.LocationsViewModel" />
+            type="com.example.mvvmexample.features.location.all.presentation.LocationsViewModel" />
     </data>
 
     <FrameLayout
